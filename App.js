@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import { I18nManager } from "react-native";
+
+import PrepareApp from "./PrepareApp";
+import UserState from "./context/user/userState";
+import OrderState from "./context/order/orderState";
 
 export default function App() {
+  I18nManager.forceRTL(true);
+  I18nManager.allowRTL(true);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <UserState>
+      <OrderState>
+        <PrepareApp />
+      </OrderState>
+    </UserState>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
